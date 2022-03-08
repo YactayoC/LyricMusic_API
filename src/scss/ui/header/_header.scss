@@ -1,0 +1,41 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header {
+    background-image: linear-gradient(rgb(0 0 0 / .4), rgb(0 0 0 / .4)),url(../img/headset.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    padding: 5rem 0 10rem 0;
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem;
+        gap: 4.5rem;
+    }
+
+    &__title {
+        margin: 0;
+        color: v.$white;
+        text-align: center;
+        font-size: 5rem;
+        font-weight: 700;
+    }
+
+    &__text {
+        text-align: center;
+        margin: 0;
+        color: v.$white;
+    }
+
+    &__button {
+        @include m.button(v.$white, v.$white, v.$black);
+        width: 100%;
+        @include m.tablet {
+            width: 20%;
+        }
+    }
+}

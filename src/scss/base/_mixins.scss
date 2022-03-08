@@ -1,0 +1,59 @@
+@use 'variables' as v; 
+
+/** Media Queries **/
+@mixin phone {
+    @media (min-width: v.$phone) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin button($color, $bghover, $texthover){
+    grid-row: 2 / 3;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+    color: $color;
+    padding: 1rem 3rem;
+    border: 2px solid lighten($color, 10%);
+    border-radius: 8px;
+    transition: background-color .3s;
+    &:hover {
+        background-color: darken($bghover, 1%);
+        border: 2px solid lighten($bghover, 10%);
+        color: $texthover;
+    }
+}
+
+@mixin heading($salto: false) {
+    font-weight: 400;
+
+    span {
+        font-weight: 700;
+        @if($salto) {
+            display: block;
+        }
+    }
+
+    &::after {
+        content: '';
+        margin: 0 auto;
+        display: block;
+        height: 1rem;
+        width: 30rem;
+        margin-top: 1rem;
+        background-image: linear-gradient(to right, v.$primary 0%, v.$primary 50%, lighten(v.$primary, 20%) 50%, lighten(v.$primary, 20%) 100%);
+    }
+}

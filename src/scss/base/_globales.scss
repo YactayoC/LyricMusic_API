@@ -1,0 +1,72 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+body {
+    font-family: v.$font_main;
+    font-size: 1.6rem;
+}
+
+p {
+    color: v.$black;
+    font-size: 2rem;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    padding:0;
+    list-style: none;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.section {
+    padding: 2rem 0;
+}
+
+h1 {
+    font-size: v.$font_heading;
+}
+
+.heading--h2 {
+    font-family: v.$font_heading;
+    text-align: center;
+    font-size: 5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10rem;
+    @include m.heading;
+    
+}
+
+.title--h3 {
+    font-family: v.$font_main;
+    text-align: center;
+    font-size: 5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10rem;
+    @include m.heading;
+    &:after {
+        background-image: linear-gradient(to right, #6c63ff 0%, #6c63ff 50%, lighten(#6c63ff, 20%) 50%, lighten(#6c63ff, 20%) 100%);
+        width: 20rem;
+    }
+}

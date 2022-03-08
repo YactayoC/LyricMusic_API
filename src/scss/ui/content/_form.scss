@@ -1,0 +1,102 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+
+    @include m.tablet { 
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__group {
+        position: relative;
+        color: #5757577e;
+    }
+    
+    &__input {
+        width: 30rem;
+        background: none;
+        color: #706c6c;
+        font-size: 1.8rem;
+        padding: .6rem 1rem;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #5757577e;
+
+        @include m.tablet {
+            width: 40rem;
+        }
+    }
+    
+    /* Si el placeholder no esta activo*/
+    &__input:not(:placeholder-shown) {
+        color: #f4aaaf;
+    }
+    
+    /* Si focus esta activo su hermano directo se afecta*/
+    &__input:focus + &__label,
+    &__input:not(:placeholder-shown) + &__label {
+        transform: translateY(-20px) scale(.7);
+        transform-origin: left top;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: #e8505b;
+    }
+    
+    &__label {
+        color: #5757577e;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 5px;
+        transform: translateY(10px);
+        transition: transform .5s, color .3s;
+    }
+    
+    &__line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scale(0);
+        transform: left bottom;
+        transition: transform .4s;
+    }
+    
+    &__input:focus ~ &__line,
+    &__input:not(:placeholder-shown) ~ &__line {
+        transform: scale(1);
+        background-color:#e8505b;
+    }   
+
+    &__button {
+        @include m.button(darken(#f4aaaf, 10%), #e8505b, v.$white);
+        background-color: v.$white;
+        width: auto;
+    }
+
+}
+
+.form {
+    &--email {
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    }
+    
+    &__area {
+        height: 10rem;
+        resize: none;
+    }
+    
+    &__button--email {
+        margin-bottom: 5rem;
+    }
+}
+

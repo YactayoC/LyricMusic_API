@@ -1,0 +1,29 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.search__result {
+    margin-top: 5rem;
+
+    &-text {
+        text-align: center;
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    &-spinner { 
+        display: flex;
+        justify-content: center;
+    }
+
+    & h3 {
+        @include m.heading;
+        &:after {
+            width: 30rem;
+            background-image: linear-gradient(to right, #6c63ff 0%, #6c63ff 50%, lighten(#6c63ff, 20%) 50%, lighten(#6c63ff, 20%) 100%);
+        }
+    }
+}
+
+.d-none {
+    display: none;
+}

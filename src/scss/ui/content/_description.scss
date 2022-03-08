@@ -1,0 +1,62 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.main {
+    &__grid {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10rem;
+    }
+}
+
+
+.main__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &:nth-child(even) {
+        .main__card-info {
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+        .main__card-image {
+            grid-column: 2/3;
+        }
+    }
+
+    &-image {
+        width: 35rem;
+
+        @include m.tablet {
+            width: 55rem;
+        }
+    }
+
+    &-info {
+        text-align: center;
+
+    }
+
+    &-title {
+        margin-bottom: 3rem;
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    &-text {
+        margin: 0;
+        text-align: center;
+        line-height: 1.8;
+        padding-inline: 6rem;
+        font-size: 2rem;
+        font-weight: 400;
+        color: v.$gray;
+    }
+}

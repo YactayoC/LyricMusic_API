@@ -1,0 +1,56 @@
+.main__message {
+    position: fixed;
+    background-color: #C8E6C9;
+    color: #388E3C;
+    right: 0;
+    top: 5rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 2rem 4rem;
+    border: 1px solid #66BB6A;
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0;
+
+    animation-name: message;
+    animation-duration: 3s;
+    animation-delay: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+
+    & span {
+        font-weight: 400;
+    }
+}
+
+@keyframes message {
+    0% {
+        opacity: 0;
+        transform: translateX(30rem);
+    }
+
+    10% {
+        opacity: 0.5;
+        transform: translateX(0rem);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(0rem);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(0rem);
+    }
+
+    90% {
+        opacity: 0.5;
+        transform: translateX(30rem);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(30rem);
+    }
+}

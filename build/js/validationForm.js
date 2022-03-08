@@ -1,0 +1,1 @@
+const messagePop=document.querySelector(".main__message");function validation(i,o){([i,o].includes("")||""===i.trim()||""===o.trim())&&console.log("vacio")}function validationEmail(i,o){[i,o].includes("")||""===i.trim()||""===o.trim()?console.log("vacio"):messagePop.classList.remove("d-none")}export{validation,validationEmail};

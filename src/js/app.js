@@ -29,6 +29,8 @@ function search(e) {
 async function consultAPI(artist, music) {
     const url = `https://api.lyrics.ovh/v1/${artist}/${music}`
 
+    title.textContent = '';
+    letter.textContent = '';
     spinner();
 
     try {

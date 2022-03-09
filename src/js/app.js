@@ -1,4 +1,4 @@
-import {validation} from './validationForm.js'
+import {validationSearch} from './validationForm.js'
 
 const form = document.getElementById('form');
 const artist = document.getElementById('artist');
@@ -17,25 +17,25 @@ function addEventListeners() {
 
 function search(e) {
     e.preventDefault();
-    validation(artist.value, music.value);
-    consultAPI(artist.value.toLowerCase(), music.value.toLowerCase());
+
+    const artistValue = artist.value;
+    const musicValue = music.value;
+
+    validationSearch(artistValue, musicValue);
+    consultAPI(artistValue.toLowerCase(), musicValue.toLowerCase());
     form.reset();
 }
 
 async function consultAPI(artist, music) {
     const url = `https://api.lyrics.ovh/v1/${artist}/${music}`
 
-    divSpinner.style.display = 'block'
     spinner();
-
-    title.classList.add('d-none');
-    letter.textContent = '';
 
     try {
         const reply = await fetch(url);
         const result = await reply.json();
 
-        if (result.error === "No lyrics found") {
+        if (result.error) {
             title.classList.remove('d-none');
             title.textContent = `${result.error}`;
             divSpinner.style.display = 'none';
@@ -43,12 +43,14 @@ async function consultAPI(artist, music) {
         }
 
         divSpinner.style.display = 'none'
-        letter.textContent = result.lyrics;
         title.classList.remove('d-none')
         title.textContent = `Results for ${music} - ${artist}`;
+        letter.textContent = result.lyrics;
+
 
     } catch (e) {
         divSpinner.style.display = 'none'
+        title.textContent = 'Fill in the empty fields'
     }
 }
 
@@ -61,5 +63,6 @@ function spinner() {
     </div>
     `;
 
+    divSpinner.style.display = 'block';
     result.appendChild(divSpinner);
 }

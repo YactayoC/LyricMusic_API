@@ -58,15 +58,7 @@ h1 {
     
 }
 
-.title--h3 {
-    font-family: v.$font_main;
+h4 {
+    font-size: 3rem;
     text-align: center;
-    font-size: 5rem;
-    letter-spacing: 5px;
-    margin-bottom: 10rem;
-    @include m.heading;
-    &:after {
-        background-image: linear-gradient(to right, #6c63ff 0%, #6c63ff 50%, lighten(#6c63ff, 20%) 50%, lighten(#6c63ff, 20%) 100%);
-        width: 20rem;
-    }
 }

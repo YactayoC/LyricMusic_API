@@ -1,18 +1,17 @@
-const messagePop = document.querySelector('.main__message');
+import callNotification from "./notificationMessage.js";
 
-function validation(value1, value2) {
+function validationSearch(value1, value2) {
     if ([value1, value2].includes('') || (value1.trim() === '' || value2.trim() === '')) {
-        console.log('vacio');
         return;
     }
 }
 
 function validationEmail(value1, value2) {
+
     if ([value1, value2].includes('') || (value1.trim() === '' || value2.trim() === '')) {
-        console.log('vacio');
         return;
     }
-    messagePop.classList.remove('d-none');
+    callNotification();
 }
 
-export {validation, validationEmail};
+export {validationSearch, validationEmail};
